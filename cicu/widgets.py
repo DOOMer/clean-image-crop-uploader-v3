@@ -1,10 +1,10 @@
+from PIL import Image
 from django import forms
 from django.conf import settings
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
-from PIL import Image
 from .models import UploadedFile
 
 

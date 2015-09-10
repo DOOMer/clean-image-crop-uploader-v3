@@ -1,9 +1,9 @@
+import Image
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.core.files import File
-import Image
 from os import path, sep, makedirs
 from .forms import UploadedFileForm
 from .models import UploadedFile
