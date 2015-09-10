@@ -1,34 +1,26 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'UploadedFile'
-        db.create_table('cicu_uploadedfile', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('creation_date', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-        ))
-        db.send_create_signal('cicu', ['UploadedFile'])
+    dependencies = [
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'UploadedFile'
-        db.delete_table('cicu_uploadedfile')
-
-
-    models = {
-        'cicu.uploadedfile': {
-            'Meta': {'ordering': "('id',)", 'object_name': 'UploadedFile'},
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'file': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
-        }
-    }
-
-    complete_apps = ['cicu']
+    operations = [
+        migrations.CreateModel(
+            name='UploadedFile',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('creation_date', models.DateTimeField(auto_now_add=True, verbose_name='creation date')),
+                ('file', models.FileField(upload_to=b'ajax_uploads/', verbose_name='file')),
+            ],
+            options={
+                'ordering': ('id',),
+                'verbose_name': 'uploaded file',
+                'verbose_name_plural': 'uploaded files',
+            },
+        ),
+    ]

@@ -1,13 +1,12 @@
 from django.db import models
-
-# Create your models here.
-
 from django import forms
 from cicu.widgets import CicuUploaderInput
 from example.settings import MEDIA_ROOT
 
+
 class testModel (models.Model):
     image = models.ImageField(verbose_name="Main image", null=True, blank=True, upload_to=MEDIA_ROOT, max_length=300)
+
 
 class freeCrop(forms.ModelForm):
     class Meta:
@@ -22,6 +21,7 @@ class freeCrop(forms.ModelForm):
             'image': CicuUploaderInput(options=cicuOptions)
         }
 
+
 class fixedRatioCrop(forms.ModelForm):
     class Meta:
         model = testModel
@@ -34,6 +34,7 @@ class fixedRatioCrop(forms.ModelForm):
         widgets = {
             'image': CicuUploaderInput(options=cicuOptions)
         }
+
 
 class warningSizeCrop(forms.ModelForm):
     class Meta:
